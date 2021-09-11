@@ -1,0 +1,28 @@
+{
+    "name": "pjuice-nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "ag-grid-community": "^26.0.0",
+        "ag-grid-react": "^26.0.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "tedious": "^12.0.0"
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.1"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "install-server": "npm install",
+        "install-client": "npm install --prefix client",
+        "install-both": "concurrently \"npm run server-dependencies\" \"npm run client-dependencies\"",
+        "server": "node index.js",
+        "client": "npm start --prefix client",
+        "both": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
