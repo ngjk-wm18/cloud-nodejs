@@ -21,17 +21,9 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: npm install, build, and test
-      run: |
+    - name: npm install
+      run:
         npm install
-        npm run build --if-present
-        npm run test --if-present
-
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v2
-      with:
-        name: node-app
-        path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -41,16 +33,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v2
-      with:
-        name: node-app
-
-    - name: 'Deploy to Azure Web App'
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'cloud-nodejs'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_9571dd7cb4da491e9e1690ee698dd93c }}
-        package: .
+    - name: node index
+      run:
+        node index
